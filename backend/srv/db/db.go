@@ -52,7 +52,7 @@ func (db *DB) Exec(ctx context.Context, sql string, arguments ...any) error {
 }
 
 // Query executes a SQL query that returns rows.
-func (db *DB) Query(ctx context.Context, sql string, arguments ...any) (pgx.Row, error) {
+func (db *DB) Query(ctx context.Context, sql string, arguments ...any) (pgx.Rows, error) {
 	if db.Pool == nil {
 		return nil, fmt.Errorf("database pool is nil")
 	}
