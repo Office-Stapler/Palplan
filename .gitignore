@@ -1,1 +1,2 @@
 backend/cmd/palplan/palplan_executable
+*.env
