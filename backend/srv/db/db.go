@@ -66,8 +66,3 @@ func (db *DB) QueryRow(ctx context.Context, sql string, arguments ...any) pgxpoo
 	}
 	return db.Pool.QueryRow(ctx, sql, arguments...)
 }
-
-// GetPool returns the pgxpool.Pool.
-func (db *DB) GetPool() *pgxpool.Pool {
-	return db.Pool
-}
