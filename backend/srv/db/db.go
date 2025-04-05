@@ -32,3 +32,15 @@ func NewDB(ctx context.Context, config *config.Config) (*DB, error) {
 
 	return &DB{Pool: pool}, nil
 }
+
+// Close closes the connection pool.
+func (db *DB) Close() {
+	if db.Pool != nil {
+		db.Pool.Close()
+	}
+}
+
+// GetPool returns the pgxpool.Pool.
+func (db *DB) GetPool() *pgxpool.Pool {
+	return db.Pool
+}
