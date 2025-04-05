@@ -19,11 +19,10 @@ func main() {
 
 	db, err := db.NewDB(context.Background(), config)
 	if err != nil {
-		db.Close()
 		log.Fatal("Error connecting to DB.")
 	}
+	defer db.Close()
 
 	log.Println("Database: ", db)
 	log.Println("Config:", config)
-	db.Close()
 }
