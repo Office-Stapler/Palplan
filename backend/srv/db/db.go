@@ -6,6 +6,7 @@ import (
 	"log"
 
 	"github.com/Office-Stapler/Palplan/backend/srv/config"
+	"github.com/jackc/pgx/v5"
 	"github.com/jackc/pgx/v5/pgxpool"
 )
 
@@ -51,7 +52,7 @@ func (db *DB) Exec(ctx context.Context, sql string, arguments ...any) error {
 }
 
 // Query executes a SQL query that returns rows.
-func (db *DB) Query(ctx context.Context, sql string, arguments ...any) (pgxpool.Rows, error) {
+func (db *DB) Query(ctx context.Context, sql string, arguments ...any) (pgx.Row, error) {
 	if db.Pool == nil {
 		return nil, fmt.Errorf("database pool is nil")
 	}
@@ -59,7 +60,7 @@ func (db *DB) Query(ctx context.Context, sql string, arguments ...any) (pgxpool.
 }
 
 // QueryRow executes a SQL query that returns at most one row.
-func (db *DB) QueryRow(ctx context.Context, sql string, arguments ...any) pgxpool.Row {
+func (db *DB) QueryRow(ctx context.Context, sql string, arguments ...any) pgx.Row {
 	if db.Pool == nil {
 		log.Println("database pool is nil") //Log instead of error, since this function returns a row.
 		return nil
