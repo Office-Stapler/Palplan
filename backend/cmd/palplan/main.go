@@ -28,8 +28,6 @@ func main() {
 	defer db.Close()
 
 	r := gin.Default()
-	log.Printf("Attempting to start Gin server with port: %d\n", config.Port)
-
 	err = r.Run(fmt.Sprintf(":%d", config.Port))
 	if err != nil {
 		panic("[Error] Gin server failed to start")
