@@ -9,9 +9,10 @@ type AccountRole struct {
 }
 
 type Account struct {
-	ID        int64        `json:"id" db:"account_id"`
-	Email     string       `json:"email" db:"email"`
-	CreatedAt *time.Time   `json:"created_at" db:"created_at"`
-	UpdatedAt *time.Time   `json:"updated_at" db:"updated_at"`
+	ID        int64        `json:"id"`
+	Email     string       `json:"email"`
+	CreatedAt *time.Time   `json:"created_at"`
+	UpdatedAt *time.Time   `json:"updated_at"`
 	Role      *AccountRole `json:"role"`
+	IsActive  bool         `jsnon:"is_active"`
 }
